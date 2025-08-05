@@ -10,7 +10,11 @@
     "db:generate": "prisma generate",
     "db:migrate": "prisma migrate dev",
     "db:studio": "prisma studio",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "pretest": "npm run test:setup",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:setup": "prisma db push --force-reset && prisma generate"
   },
   "keywords": [
     "fleet",
@@ -36,6 +40,8 @@
     "@types/node": "^24.2.0",
     "@types/supertest": "^6.0.3",
     "@types/yup": "^0.29.14",
+    "@typescript-eslint/eslint-plugin": "^8.39.0",
+    "@typescript-eslint/parser": "^8.39.0",
     "jest": "^30.0.5",
     "nodemon": "^3.1.10",
     "prisma": "^6.13.0",

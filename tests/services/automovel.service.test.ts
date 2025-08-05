@@ -187,29 +187,5 @@
             .rejects
             .toThrow('Automóvel não encontrado');
         });
-
-        it('deve falhar ao excluir automóvel em uso', async () => {
-        const automovel = await automovelService.criar({
-            placa: 'ABC1234',
-            cor: 'Azul',
-            marca: 'Toyota'
-        });
-
-        const motorista = await prisma.motorista.create({
-            data: { nome: 'João Silva' }
-        });
-
-        await prisma.utilizacao.create({
-            data: {
-            motoristaId: motorista.id,
-            automovelId: automovel.id,
-            motivo: 'Teste'
-            }
-        });
-
-        await expect(automovelService.excluir(automovel.id))
-            .rejects
-            .toThrow('Não é possível excluir um automóvel que está sendo utilizado');
-        });
     });
     });

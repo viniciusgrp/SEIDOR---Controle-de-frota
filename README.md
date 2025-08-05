@@ -112,6 +112,40 @@ O servidor estará rodando em `http://localhost:3000`
 3. **Placa**: Deve ser única no sistema
 4. **Exclusão**: Não é possível excluir automóvel ou motorista em uso
 
+## 🧪 Executando Testes
+
+### Configuração Inicial
+Antes de executar os testes pela primeira vez, configure o ambiente:
+```bash
+npm run test:setup
+```
+
+### Executando Testes
+```bash
+# Executar todos os testes
+npm test
+
+# Executar testes em modo watch (reexecuta quando há mudanças)
+npm run test:watch
+
+# Executar testes com relatório de cobertura
+npm run test:coverage
+```
+
+### Estrutura dos Testes
+Os testes estão organizados em:
+- `tests/services/` - Testes unitários dos serviços
+  - `automovel.service.test.ts` - Testes CRUD de automóveis
+  - `motorista.service.test.ts` - Testes CRUD de motoristas
+  - `utilizacao.service.test.ts` - Testes de regras de negócio
+
+### O que é Testado
+- ✅ Operações CRUD completas
+- ✅ Validações de dados
+- ✅ Regras de negócio (automóvel único por motorista)
+- ✅ Tratamento de erros
+- ✅ Relacionamentos entre entidades
+
 ## 🧪 Testando com Postman
 
 ### Importar Collection
@@ -180,3 +214,20 @@ O servidor estará rodando em `http://localhost:3000`
 - `npm run db:generate` - Gerar cliente Prisma
 - `npm run db:migrate` - Executar migrações
 - `npm run db:studio` - Abrir Prisma Studio
+- `npm run test:setup` - Configurar ambiente de testes
+- `npm test` - Executar testes unitários
+- `npm run test:watch` - Executar testes em modo watch
+- `npm run test:coverage` - Executar testes com cobertura
+
+## ⚠️ Importante para Desenvolvedores
+
+### Primeira Execução
+Após clonar o repositório, sempre execute:
+```bash
+npm install
+npm run db:migrate
+npm run test:setup
+```
+
+### Executando Testes
+Os testes usam o mesmo banco de dados SQLite do desenvolvimento, mas limpam os dados antes de cada teste. O comando `npm run test:setup` é executado automaticamente antes dos testes para garantir que o banco esteja configurado corretamente.
