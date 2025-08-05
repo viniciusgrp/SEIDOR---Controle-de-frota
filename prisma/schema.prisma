@@ -10,3 +10,46 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model Automovel {
+  id        String   @id @default(uuid())
+  placa     String   @unique
+  cor       String
+  marca     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  utilizacoes Utilizacao[]
+  
+  @@map("automoveis")
+}
+
+model Motorista {
+  id        String   @id @default(uuid())
+  nome      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  utilizacoes Utilizacao[]
+  
+  @@map("motoristas")
+}
+
+model Utilizacao {
+  id               String    @id @default(uuid())
+  dataInicio       DateTime  @default(now())
+  dataTermino      DateTime?
+  motivo           String
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  
+  motorista        Motorista @relation(fields: [motoristaId], references: [id])
+  motoristaId      String
+  
+  automovel        Automovel @relation(fields: [automovelId], references: [id])
+  automovelId      String
+  
+  @@map("utilizacoes")
+}
+
+
