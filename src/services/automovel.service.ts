@@ -75,15 +75,13 @@ export class AutomovelService {
 
     if (filtros.cor) {
       where.cor = {
-        contains: filtros.cor,
-        mode: 'insensitive'
+        contains: filtros.cor
       };
     }
 
     if (filtros.marca) {
       where.marca = {
-        contains: filtros.marca,
-        mode: 'insensitive'
+        contains: filtros.marca
       };
     }
 
