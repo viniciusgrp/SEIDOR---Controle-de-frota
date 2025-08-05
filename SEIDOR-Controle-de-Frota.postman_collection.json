@@ -1,0 +1,380 @@
+{
+  "info": {
+    "name": "SEIDOR - Controle de Frota",
+    "description": "API para controle de frota de automóveis",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000/api",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:3000/health",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "3000",
+          "path": ["health"]
+        }
+      }
+    },
+    {
+      "name": "Automóveis",
+      "item": [
+        {
+          "name": "Criar Automóvel",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"placa\": \"ABC1234\",\n  \"cor\": \"Azul\",\n  \"marca\": \"Toyota\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/automoveis",
+              "host": ["{{baseUrl}}"],
+              "path": ["automoveis"]
+            }
+          }
+        },
+        {
+          "name": "Listar Automóveis",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/automoveis",
+              "host": ["{{baseUrl}}"],
+              "path": ["automoveis"]
+            }
+          }
+        },
+        {
+          "name": "Filtrar Automóveis por Cor",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/automoveis?cor=Azul",
+              "host": ["{{baseUrl}}"],
+              "path": ["automoveis"],
+              "query": [
+                {
+                  "key": "cor",
+                  "value": "Azul"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Filtrar Automóveis por Marca",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/automoveis?marca=Toyota",
+              "host": ["{{baseUrl}}"],
+              "path": ["automoveis"],
+              "query": [
+                {
+                  "key": "marca",
+                  "value": "Toyota"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Automóvel por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/automoveis/{{automovelId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["automoveis", "{{automovelId}}"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Automóvel",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cor\": \"Verde\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/automoveis/{{automovelId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["automoveis", "{{automovelId}}"]
+            }
+          }
+        },
+        {
+          "name": "Excluir Automóvel",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/automoveis/{{automovelId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["automoveis", "{{automovelId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Motoristas",
+      "item": [
+        {
+          "name": "Criar Motorista",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Silva\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/motoristas",
+              "host": ["{{baseUrl}}"],
+              "path": ["motoristas"]
+            }
+          }
+        },
+        {
+          "name": "Listar Motoristas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/motoristas",
+              "host": ["{{baseUrl}}"],
+              "path": ["motoristas"]
+            }
+          }
+        },
+        {
+          "name": "Filtrar Motoristas por Nome",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/motoristas?nome=João",
+              "host": ["{{baseUrl}}"],
+              "path": ["motoristas"],
+              "query": [
+                {
+                  "key": "nome",
+                  "value": "João"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Motorista por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/motoristas/{{motoristaId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["motoristas", "{{motoristaId}}"]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Motorista",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"João Silva Santos\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/motoristas/{{motoristaId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["motoristas", "{{motoristaId}}"]
+            }
+          }
+        },
+        {
+          "name": "Excluir Motorista",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/motoristas/{{motoristaId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["motoristas", "{{motoristaId}}"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Utilizações",
+      "item": [
+        {
+          "name": "Iniciar Utilização",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"motoristaId\": \"{{motoristaId}}\",\n  \"automovelId\": \"{{automovelId}}\",\n  \"motivo\": \"Viagem de negócios\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/utilizacoes",
+              "host": ["{{baseUrl}}"],
+              "path": ["utilizacoes"]
+            }
+          }
+        },
+        {
+          "name": "Listar Utilizações",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/utilizacoes",
+              "host": ["{{baseUrl}}"],
+              "path": ["utilizacoes"]
+            }
+          }
+        },
+        {
+          "name": "Buscar Utilização por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/utilizacoes/{{utilizacaoId}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["utilizacoes", "{{utilizacaoId}}"]
+            }
+          }
+        },
+        {
+          "name": "Finalizar Utilização",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/utilizacoes/{{utilizacaoId}}/finalizar",
+              "host": ["{{baseUrl}}"],
+              "path": ["utilizacoes", "{{utilizacaoId}}", "finalizar"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Testes de Validação",
+      "item": [
+        {
+          "name": "Criar Automóvel - Dados Inválidos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"placa\": \"\",\n  \"cor\": \"\",\n  \"marca\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/automoveis",
+              "host": ["{{baseUrl}}"],
+              "path": ["automoveis"]
+            }
+          }
+        },
+        {
+          "name": "Criar Motorista - Nome Vazio",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/motoristas",
+              "host": ["{{baseUrl}}"],
+              "path": ["motoristas"]
+            }
+          }
+        },
+        {
+          "name": "Criar Utilização - Dados Inválidos",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"motoristaId\": \"\",\n  \"automovelId\": \"\",\n  \"motivo\": \"\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/utilizacoes",
+              "host": ["{{baseUrl}}"],
+              "path": ["utilizacoes"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
