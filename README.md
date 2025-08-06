@@ -125,6 +125,12 @@ npm run test:setup
 # Executar todos os testes
 npm test
 
+# Executar apenas testes de serviços
+npm run test:services
+
+# Executar apenas testes de controllers
+npm run test:controllers
+
 # Executar testes em modo watch (reexecuta quando há mudanças)
 npm run test:watch
 
@@ -138,13 +144,20 @@ Os testes estão organizados em:
   - `automovel.service.test.ts` - Testes CRUD de automóveis
   - `motorista.service.test.ts` - Testes CRUD de motoristas
   - `utilizacao.service.test.ts` - Testes de regras de negócio
+- `tests/controllers/` - Testes de integração dos controllers
+  - `automovel.controller.test.ts` - Testes de API para automóveis
+  - `motorista.controller.test.ts` - Testes de API para motoristas
+  - `utilizacao.controller.test.ts` - Testes de API para utilizações
 
 ### O que é Testado
 - ✅ Operações CRUD completas
-- ✅ Validações de dados
+- ✅ Validações de dados (Yup schemas)
 - ✅ Regras de negócio (automóvel único por motorista)
 - ✅ Tratamento de erros
 - ✅ Relacionamentos entre entidades
+- ✅ Endpoints da API (HTTP status codes)
+- ✅ Respostas JSON padronizadas
+- ✅ Filtros e parâmetros de consulta
 
 ## 🧪 Testando com Postman
 
@@ -216,6 +229,8 @@ Os testes estão organizados em:
 - `npm run db:studio` - Abrir Prisma Studio
 - `npm run test:setup` - Configurar ambiente de testes
 - `npm test` - Executar testes unitários
+- `npm run test:services` - Executar apenas testes de serviços
+- `npm run test:controllers` - Executar apenas testes de controllers
 - `npm run test:watch` - Executar testes em modo watch
 - `npm run test:coverage` - Executar testes com cobertura
 

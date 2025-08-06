@@ -14,6 +14,8 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
+    "test:services": "jest tests/services",
+    "test:controllers": "jest tests/controllers",
     "test:setup": "prisma db push --force-reset && prisma generate"
   },
   "keywords": [
